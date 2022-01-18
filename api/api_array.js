@@ -11,13 +11,14 @@ const Product = function Product (product, id){
 module.exports.ApiMethods = class ApiMethods {
     constructor (){
         this.products = [];
-        this.maxId = this.products.length;
+        //Productos a modo de ejemplo
         this.products.push(new Product({title: "Titulo1", price: 100.58, thumbnail: "http://www.google.com"}, 1));
         this.products.push(new Product({title: "Titulo2", price: 200.58, thumbnail: "http://www.google.com"}, 2));
         this.products.push(new Product({title: "Titulo3", price: 300.58, thumbnail: "http://www.google.com"}, 3));
         this.products.push(new Product({title: "Titulo4", price: 400.58, thumbnail: "http://www.google.com"}, 4));
         this.products.push(new Product({title: "Titulo5", price: 500.58, thumbnail: "http://www.google.com"}, 5));
         this.products.push(new Product({title: "Titulo6", price: 600.58, thumbnail: "http://www.google.com"}, 6));
+        this.maxId = this.products.length;
     }
 
     getProducts(){
@@ -52,7 +53,7 @@ module.exports.ApiMethods = class ApiMethods {
 
     addNewProduct(product){
         if(product.title && !isNaN(parseFloat(product.price)) && product.thumbnail){
-            const newProduct = new Product(product,++maxId);
+            const newProduct = new Product(product,++this.maxId);
             this.products.push(newProduct);
             return {status: 200, content: newProduct};
         } else {
